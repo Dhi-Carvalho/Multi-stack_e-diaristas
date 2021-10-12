@@ -4,12 +4,18 @@ import InputMask from 'react-input-mask'
 import TextField from 'ui/components/inputs/TextField/TextField'
 
 export interface TextFieldMaskProps extends OutlinedTextFieldProps {
+  value: string
   mask: string
 }
 
-const TextFieldMask: React.FC<TextFieldMaskProps> = ({ mask, ...props }) => {
+const TextFieldMask: React.FC<TextFieldMaskProps> = ({
+  mask,
+  value,
+  onChange,
+  ...props
+}) => {
   return (
-    <InputMask mask={mask}>
+    <InputMask mask={mask} value={value} onChange={onChange}>
       {() => {
         return <TextField {...props} />
       }}
